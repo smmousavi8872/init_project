@@ -1,6 +1,6 @@
-package com.developer.smmmousavi.initialstructure.activities.base;
+package com.developer.smmmousavi.initialstructure.activities.base.di;
 
-import com.developer.smmmousavi.initialstructure.activities.MainActivity;
+import com.developer.smmmousavi.initialstructure.activities.main.MainActivity;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -10,4 +10,5 @@ public abstract class ActivityBuildersModule {
 
     @ContributesAndroidInjector
     abstract MainActivity contributeMainActivity();
+
 }

@@ -10,7 +10,12 @@ import com.developer.smmmousavi.initialstructure.factory.viewmodel.ViewModelProv
 
 import javax.inject.Inject;
 
+import androidx.annotation.AnimRes;
+import androidx.annotation.AnimatorRes;
+import androidx.annotation.IdRes;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProviders;
 import dagger.android.support.DaggerFragment;
 
@@ -24,6 +29,7 @@ public class BaseDaggerFrgment extends DaggerFragment {
     }
 
     private BaseFragmentViewModel mViewModel;
+    private FragmentManager mFm;
 
     @Inject
     ViewModelProviderFactory mProviderFactory;
@@ -34,12 +40,45 @@ public class BaseDaggerFrgment extends DaggerFragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_base_dagger, container, false);
 
-        initViewModel();
+        initVariables();
 
         return v;
     }
 
-    private void initViewModel() {
+    private void initVariables() {
         mViewModel = ViewModelProviders.of(this, mProviderFactory).get(BaseFragmentViewModel.class);
+        mFm = getFragmentManager();
     }
+
+    public void replaceFragment(@IdRes int containerId,
+                                @NonNull Fragment fragment,
+                                @NonNull String tag,
+                                @AnimatorRes @AnimRes int enterAnimId,
+                                @AnimatorRes @AnimRes int exitAnimId) {
+
+        Fragment foundFragment = mFm.findFragmentByTag(tag);
+        if (foundFragment == null)
+            mFm.beginTransaction()
+                .setCustomAnimations(enterAnimId, exitAnimId)
+                .replace(containerId, fragment, tag)
+                .addToBackStack(tag)
+                .commit();
+        else
+            mFm.beginTransaction()
+                .setCustomAnimations(enterAnimId, exitAnimId)
+                .replace(containerId, fragment, tag)
+                .commit();
+
+    }
+
+    public void removeFragment(@NonNull Fragment fragment) {
+        mFm.beginTransaction()
+            .remove(fragment)
+            .commit();
+    }
+
+    public Fragment findFragmentByTag(String fragmentTag) {
+        return mFm.findFragmentByTag(fragmentTag);
+    }
+
 }
