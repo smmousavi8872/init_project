@@ -5,7 +5,7 @@ import android.app.Application;
 import com.developer.smmmousavi.initialstructure.activities.base.ActivityBuildersModule;
 import com.developer.smmmousavi.initialstructure.application.BaseApplication;
 import com.developer.smmmousavi.initialstructure.factory.viewmodel.di.ViewModelFactoryModule;
-import com.developer.smmmousavi.initialstructure.fragments.FragmentsBuilderModule;
+import com.developer.smmmousavi.initialstructure.fragments.base.di.FragmentsBuilderModule;
 
 import javax.inject.Singleton;
 
