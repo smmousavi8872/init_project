@@ -1,7 +1,7 @@
-package com.developer.smmmousavi.initialstructure.activities.main;
+package com.developer.smmmousavi.initialstructure.ui.activities.main;
 
-import com.developer.smmmousavi.initialstructure.activities.singlefragment.SingleFragmentActivity;
-import com.developer.smmmousavi.initialstructure.fragments.main.MainDaggerFragment;
+import com.developer.smmmousavi.initialstructure.ui.activities.singlefragment.SingleFragmentActivity;
+import com.developer.smmmousavi.initialstructure.ui.fragments.main.MainDaggerFragment;
 
 import androidx.fragment.app.Fragment;
 

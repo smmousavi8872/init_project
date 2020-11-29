@@ -2,17 +2,28 @@ package com.developer.smmmousavi.initialstructure.base;
 
 import android.view.View;
 
+import com.developer.smmmousavi.initialstructure.base.recyclerview.OnRvItemClickListener;
+import com.developer.smmmousavi.initialstructure.model.BaseModel;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import butterknife.ButterKnife;
+import androidx.viewbinding.ViewBinding;
 
-public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder implements View.OnClickListener {
+public abstract class BaseViewHolder<T extends BaseModel> extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    public BaseViewHolder(@NonNull View itemView) {
-        super(itemView);
-        ButterKnife.bind(this, itemView);
-        itemView.setOnClickListener(this);
+    private final OnRvItemClickListener mOnItemClick;
+
+    public BaseViewHolder(@NonNull ViewBinding viewBinding, OnRvItemClickListener onItemClick) {
+        super(viewBinding.getRoot());
+        viewBinding.getRoot().setOnClickListener(this);
+        mOnItemClick = onItemClick;
     }
 
     public abstract void bind(T item);
+
+
+    @Override
+    public void onClick(View v) {
+        mOnItemClick.onRvItemClick(getAdapterPosition(), v);
+    }
 }

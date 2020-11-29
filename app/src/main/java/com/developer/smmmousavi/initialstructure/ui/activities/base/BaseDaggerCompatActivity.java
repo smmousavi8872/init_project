@@ -1,4 +1,4 @@
-package com.developer.smmmousavi.initialstructure.activities.base;
+package com.developer.smmmousavi.initialstructure.ui.activities.base;
 
 import android.os.Bundle;
 import android.view.View;

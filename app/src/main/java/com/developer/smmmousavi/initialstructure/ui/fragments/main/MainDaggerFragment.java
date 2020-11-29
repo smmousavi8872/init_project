@@ -1,4 +1,4 @@
-package com.developer.smmmousavi.initialstructure.fragments.main;
+package com.developer.smmmousavi.initialstructure.ui.fragments.main;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

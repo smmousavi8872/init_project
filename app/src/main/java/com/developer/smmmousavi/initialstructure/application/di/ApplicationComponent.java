@@ -2,10 +2,10 @@ package com.developer.smmmousavi.initialstructure.application.di;
 
 import android.app.Application;
 
-import com.developer.smmmousavi.initialstructure.activities.base.di.ActivityBuildersModule;
+import com.developer.smmmousavi.initialstructure.ui.activities.base.di.ActivityBuildersModule;
 import com.developer.smmmousavi.initialstructure.application.BaseApplication;
 import com.developer.smmmousavi.initialstructure.factory.viewmodel.di.ViewModelFactoryModule;
-import com.developer.smmmousavi.initialstructure.fragments.base.di.FragmentsBuilderModule;
+import com.developer.smmmousavi.initialstructure.ui.fragments.base.di.FragmentsBuilderModule;
 
 import javax.inject.Singleton;
 

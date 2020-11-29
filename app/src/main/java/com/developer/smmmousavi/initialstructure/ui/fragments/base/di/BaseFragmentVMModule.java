@@ -1,7 +1,7 @@
-package com.developer.smmmousavi.initialstructure.fragments.base.di;
+package com.developer.smmmousavi.initialstructure.ui.fragments.base.di;
 
 import com.developer.smmmousavi.initialstructure.factory.viewmodel.di.ViewModelKey;
-import com.developer.smmmousavi.initialstructure.fragments.base.BaseFragmentViewModel;
+import com.developer.smmmousavi.initialstructure.ui.fragments.base.BaseFragmentViewModel;
 
 import androidx.lifecycle.ViewModel;
 import dagger.Binds;

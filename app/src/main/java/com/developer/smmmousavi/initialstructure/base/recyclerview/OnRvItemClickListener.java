@@ -2,7 +2,7 @@ package com.developer.smmmousavi.initialstructure.base.recyclerview;
 
 import android.view.View;
 
-public interface OnItemClickListener {
+public interface OnRvItemClickListener {
 
-    void onItemClick(int position, View view);
+    void onRvItemClick(int position, View view);
 }

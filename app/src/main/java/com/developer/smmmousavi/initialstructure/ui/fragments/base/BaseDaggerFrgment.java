@@ -1,4 +1,4 @@
-package com.developer.smmmousavi.initialstructure.fragments.base;
+package com.developer.smmmousavi.initialstructure.ui.fragments.base;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProviders;
+import butterknife.ButterKnife;
 import dagger.android.support.DaggerFragment;
 
 /**
@@ -39,7 +40,7 @@ public class BaseDaggerFrgment extends DaggerFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_base_dagger, container, false);
-
+        ButterKnife.bind(this, v);
         initVariables();
 
         return v;

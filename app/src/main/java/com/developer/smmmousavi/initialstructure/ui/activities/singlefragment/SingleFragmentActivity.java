@@ -1,9 +1,9 @@
-package com.developer.smmmousavi.initialstructure.activities.singlefragment;
+package com.developer.smmmousavi.initialstructure.ui.activities.singlefragment;
 
 import android.os.Bundle;
 
 import com.developer.smmmousavi.initialstructure.R;
-import com.developer.smmmousavi.initialstructure.activities.base.BaseDaggerCompatActivity;
+import com.developer.smmmousavi.initialstructure.ui.activities.base.BaseDaggerCompatActivity;
 import com.developer.smmmousavi.initialstructure.factory.SingleFragmentFactory;
 
 import androidx.fragment.app.Fragment;

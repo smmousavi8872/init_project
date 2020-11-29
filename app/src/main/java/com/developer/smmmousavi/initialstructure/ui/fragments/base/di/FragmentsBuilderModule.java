@@ -1,8 +1,8 @@
-package com.developer.smmmousavi.initialstructure.fragments.base.di;
+package com.developer.smmmousavi.initialstructure.ui.fragments.base.di;
 
-import com.developer.smmmousavi.initialstructure.fragments.base.BaseDaggerFrgment;
-import com.developer.smmmousavi.initialstructure.fragments.main.MainDaggerFragment;
-import com.developer.smmmousavi.initialstructure.fragments.main.di.MainDaggerFragmentModule;
+import com.developer.smmmousavi.initialstructure.ui.fragments.base.BaseDaggerFrgment;
+import com.developer.smmmousavi.initialstructure.ui.fragments.main.MainDaggerFragment;
+import com.developer.smmmousavi.initialstructure.ui.fragments.main.di.MainDaggerFragmentModule;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
