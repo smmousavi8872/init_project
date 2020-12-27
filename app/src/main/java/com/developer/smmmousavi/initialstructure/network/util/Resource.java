@@ -22,7 +22,6 @@ public class Resource<T> {
         mData = data;
         mMessage = message;
     }
-
     public static <T> Resource<T> success(@NonNull T data) {
         return new Resource<>(Status.SUCCESS, data, null);
     }
@@ -34,4 +33,5 @@ public class Resource<T> {
     public static <T> Resource<T> loading(@Nullable T data) {
         return new Resource<>(Status.LOADING, data, null);
     }
+
 }

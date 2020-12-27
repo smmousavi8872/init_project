@@ -7,9 +7,14 @@ import com.developer.smmmousavi.initialstructure.activities.base.BaseDaggerCompa
 
 public class MainActivity extends BaseDaggerCompatActivity {
 
+    private static final String TAG = "MainActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
 }
+
+
