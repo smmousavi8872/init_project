@@ -1,26 +1,17 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     buildToolsVersion "29.0.0"
 
     defaultConfig {
         applicationId "com.developer.smmmousavi.initialstructure"
-        minSdkVersion 21
-        targetSdkVersion 28
+        minSdkVersion 16
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        multiDexEnabled true
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [
-                        "room.schemaLocation"  : "$projectDir/schemas".toString(),
-                        "room.incremental"     : "true",
-                        "room.expandProjection": "true"]
-            }
-        }
     }
 
     buildTypes {
@@ -31,10 +22,8 @@ android {
                 shrinkResources true
                 proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
                 proguardFiles fileTree('proguard').asList().toArray()
-                multiDexEnabled false
             }
             debug {
-                multiDexEnabled true
                 debuggable true
                 minifyEnabled false
             }
@@ -85,8 +74,6 @@ dependencies {
 
     //material design
     implementation 'com.google.android.material:material:1.2.1'
-
-
 
     //glide
     def glideVersion = "4.11.0"

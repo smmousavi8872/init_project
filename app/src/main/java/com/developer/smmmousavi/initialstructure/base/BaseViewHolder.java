@@ -9,7 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 
-public abstract class BaseViewHolder<T extends BaseModel> extends RecyclerView.ViewHolder implements View.OnClickListener {
+public abstract class BaseViewHolder<T extends BaseModel>
+    extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     private final OnRvItemClickListener mOnItemClick;
 
