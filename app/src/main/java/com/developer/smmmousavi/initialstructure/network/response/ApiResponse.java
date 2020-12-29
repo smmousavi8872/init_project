@@ -34,7 +34,6 @@ public class ApiResponse<T> {
 
     }
 
-
     public class ApiSuccessResponse<T> extends ApiResponse<T> {
         private T mBody;
 

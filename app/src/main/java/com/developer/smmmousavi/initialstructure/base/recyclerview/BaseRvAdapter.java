@@ -2,28 +2,30 @@ package com.developer.smmmousavi.initialstructure.base.recyclerview;
 
 import android.view.ViewGroup;
 
+import com.developer.smmmousavi.initialstructure.base.BaseViewHolder;
+import com.developer.smmmousavi.initialstructure.model.BaseModel;
+
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-public abstract class BaseRvAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public abstract class BaseRvAdapter<T extends BaseModel> extends RecyclerView.Adapter<BaseViewHolder<T>> {
 
     protected static final int HEADER = 0;
     protected static final int ITEM = 1;
     protected static final int FOOTER = 2;
 
     protected List<T> mItemList;
-    protected OnItemClickListener mOnItemClickListener;
-    protected OnReloadClickListener mOnReloadClickListener;
+    protected OnRvItemClickListener mOnItemClickListener;
     protected boolean mIsFooterAdded = false;
 
-    protected abstract RecyclerView.ViewHolder createHeaderViewHolder(ViewGroup parent);
+    protected abstract BaseViewHolder<T> createHeaderViewHolder(ViewGroup parent);
 
-    protected abstract RecyclerView.ViewHolder createItemViewHolder(ViewGroup parent);
+    protected abstract BaseViewHolder<T> createItemViewHolder(ViewGroup parent, OnRvItemClickListener listener);
 
-    protected abstract RecyclerView.ViewHolder createFooterViewHolder(ViewGroup parent);
+    protected abstract BaseViewHolder<T> createFooterViewHolder(ViewGroup parent);
 
     protected abstract void bindHeaderViewHolder(RecyclerView.ViewHolder viewHolder);
 
@@ -39,9 +41,16 @@ public abstract class BaseRvAdapter<T> extends RecyclerView.Adapter<RecyclerView
 
     public abstract void addFooter();
 
+    public abstract int createItemViewType(int position);
+
     public enum FooterType {
         LOAD_MORE,
         ERROR
+    }
+
+    public BaseRvAdapter(OnRvItemClickListener listener) {
+        mOnItemClickListener = listener;
+
     }
 
     public void setItemList(List<T> items) {
@@ -55,27 +64,27 @@ public abstract class BaseRvAdapter<T> extends RecyclerView.Adapter<RecyclerView
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        RecyclerView.ViewHolder viewHolder;
+    public BaseViewHolder<T> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        BaseViewHolder<T> viewHolder;
 
         switch (viewType) {
             case HEADER:
                 viewHolder = createHeaderViewHolder(parent);
                 break;
             case ITEM:
-                viewHolder = createItemViewHolder(parent);
+                viewHolder = createItemViewHolder(parent, mOnItemClickListener);
                 break;
             case FOOTER:
                 viewHolder = createFooterViewHolder(parent);
                 break;
             default:
-                viewHolder = createItemViewHolder(parent);
+                viewHolder = createItemViewHolder(parent, mOnItemClickListener);
         }
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder( BaseViewHolder<T> viewHolder, int position) {
         switch (getItemViewType(position)) {
             case HEADER:
                 bindHeaderViewHolder(viewHolder);
@@ -96,6 +105,11 @@ public abstract class BaseRvAdapter<T> extends RecyclerView.Adapter<RecyclerView
         if (mItemList != null)
             return mItemList.size();
         return 0;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return createItemViewType(position);
     }
 
     public T getItem(int position) {
@@ -161,11 +175,7 @@ public abstract class BaseRvAdapter<T> extends RecyclerView.Adapter<RecyclerView
         }
     }
 
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+    public void setOnItemClickListener(OnRvItemClickListener onItemClickListener) {
         mOnItemClickListener = onItemClickListener;
-    }
-
-    public void setOnReloadClickListener(OnReloadClickListener onReloadClickListener) {
-        mOnReloadClickListener = onReloadClickListener;
     }
 }

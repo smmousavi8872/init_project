@@ -8,8 +8,6 @@ import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
 
 public class KeyboardManager {
-
-
     private static final String TAG = KeyboardManager.class.getSimpleName();
 
     public interface OnKeyboardListener {
@@ -22,7 +20,7 @@ public class KeyboardManager {
         mContext = context;
     }
 
-    private Context mContext;
+    private final Context mContext;
     private View mContentView;
     private ViewTreeObserver.OnGlobalLayoutListener mOnGlobalLayoutListener;
     private boolean mIsKeyboardVisible;
